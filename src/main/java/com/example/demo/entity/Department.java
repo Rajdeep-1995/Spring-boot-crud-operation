@@ -15,6 +15,7 @@ public class Department {
     @Size(max = 20,min=2)
     /*
     @Email
+    @Length
     @Positive
     @Negative
     @PositiveOrZero
