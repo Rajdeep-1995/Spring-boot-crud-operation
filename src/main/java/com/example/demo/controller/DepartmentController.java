@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Department;
+import com.example.demo.error.DepartmentNotFoundException;
 import com.example.demo.service.DepartmentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +18,7 @@ public class DepartmentController {
 
     private final Logger LOGGER = LoggerFactory.getLogger(DepartmentController.class);
 
+
     @PostMapping("/departments")
     public Department saveDepartment(@Valid @RequestBody Department department){
         LOGGER.info("inside saveDepartment and request type is POST");
@@ -30,7 +32,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/department/{id}")
-    public Department fetchDepartmentById(@PathVariable("id") Long departmentId){
+    public Department fetchDepartmentById(@PathVariable("id") Long departmentId) throws DepartmentNotFoundException {
         return departmentService.fetchDepartmentById(departmentId);
     }
 
